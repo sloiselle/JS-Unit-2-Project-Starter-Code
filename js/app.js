@@ -3,10 +3,14 @@
 */
 
 // NPR API Key: kIBQCCCffeYXhxGTvLmokAqDXNYS54wU2ngMpCWv
+// Guardian API Key: 695fa638-6cf0-4f26-abb9-21ad316b0b1f
 
 //Use handlebars.js to template articles
 //Make AJAX request to NPR
 //Add second source later
+
+//
+
 //Create a 'loading' container
 	//While articles.length === 0, show loader - something like that
 //Clicking on article should pop overlay/modal with full article
