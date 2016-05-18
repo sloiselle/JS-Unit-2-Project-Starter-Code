@@ -36,3 +36,7 @@ var getNPRData = function () {
 		console.log(formattedStories);
 	}
 }();
+
+$('#search').on('click',function() {
+	$('#search').css('width','100px');
+})

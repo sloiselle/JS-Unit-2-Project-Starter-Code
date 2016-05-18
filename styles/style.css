@@ -120,11 +120,11 @@ header nav {
 }
 
 /* Search bar */
-header #search {
+header .search {
   width: 20px;
   height: 20px;
   position: absolute;
-  right: 20px;
+  right: -55px;
   top: 10px;
 }
 
@@ -266,4 +266,68 @@ nav ul ul li {
   margin-top: 15px;
   text-align: right;
   color: #097FB2;
+}
+
+/*Scott's Styles*/
+.search{
+  border: none;
+  height: 20px;
+  width: 5px;
+  margin: auto 50px;
+  padding: 10px 5px 10px 8px;
+  background: #cc0020;
+  transition-duration: .3s;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: FontAwesome, 'Helvetica';
+}
+
+.search::-webkit-input-placeholder {
+   color: #ffffff;
+}
+
+.search::-moz-placeholder {  /* Firefox 19+ */
+   color: #ffffff;  
+}
+
+.search::-ms-input-placeholder {  
+   color: #ffffff;  
+}
+
+.search:hover{
+  background: #ffffff;
+  color: #cc0020;
+}
+
+.search:hover::-webkit-input-placeholder {
+   color: #cc0020;
+}
+
+.search:hover::-moz-placeholder {  /* Firefox 19+ */
+   color: #cc0020;  
+}
+
+.search:hover::-ms-input-placeholder {  
+   color: #cc0020;  
+}
+
+.search:focus{
+  border-radius: 25px;
+  width: 300px;
+  outline: none;
+  background: #ffffff;
+  color: #cc0020;
+  font-family: FontAwesome, 'Helvetica';
+}
+
+.search:focus::-webkit-input-placeholder {
+   color: #cc0020;
+}
+
+.search:focus::-moz-placeholder {  /* Firefox 19+ */
+   color: #cc0020;  
+}
+
+.search:focus::-ms-input-placeholder {  
+   color: #cc0020;  
 }
