@@ -2,7 +2,7 @@
   Please add all Javascript code to this file.
 */
 
-// NPR API Key: kIBQCCCffeYXhxGTvLmokAqDXNYS54wU2ngMpCWv
+// NPR API Key: 9ps9dzo9PmPyqtzPdjzF0drPbd6pX7cVRALpWavn
 // Guardian API Key: 695fa638-6cf0-4f26-abb9-21ad316b0b1f
 
 //JB - Use handlebars.js to template articles
