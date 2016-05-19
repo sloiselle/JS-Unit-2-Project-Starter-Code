@@ -6,10 +6,21 @@
     </head>
 
     <body>
-      
-      <span id='templatedArticle'></span>
 
-      <!-- *** template *** -->
+      <div id='listedArticles'></div>
+
+      <div id='articleOverlays'>
+      <span id='templatedArticle'></span>
+      </div>
+
+      <!-- *** templates *** -->
+      <script id='articleList' type='text/x-handlebars-template'>
+        <article>
+          <h1>{{title}}</h1>
+          <h3>{{source}}</h3>
+        </article>
+      </script>
+
       <script id='articleTemplate' type='text/x-handlebars-template'>
         <article>
           <h1>{{title}}</h1>
