@@ -1,0 +1,30 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+    <head>
+
+    </head>
+
+    <body>
+      
+      <span id='templatedArticle'></span>
+
+      <!-- *** template *** -->
+      <script id='articleTemplate' type='text/x-handlebars-template'>
+        <article>
+          <h1>{{title}}</h1>
+          <h2>Published on: {{date}}</h2>
+          <span class='blurb'>{{blurb}}</span>
+          <span class='fullStory'>{{fullStory}}</span>
+          <a href='{{link}}'>Read more from source</link>
+        </article>
+      </script>
+
+      <!-- *** js library links -->
+      <script src="js/handlebars-v4.0.5.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+      <!-- ** my js file -->
+      <script src="js/jb.js" type="text/javascript" charset="utf-8" async defer></script>
+    </body>
+</html>
