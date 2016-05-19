@@ -25,11 +25,13 @@ var getNPRData = function () {
 				fullStory += elem.text.paragraph[i].$text;
 			}
 			var story = {
+				id: elem.id,
 				title: elem.title.$text,
 				date: elem.pubDate.$text,
 				blurb: elem.teaser.$text,
 				fullStory: fullStory,
-				link: elem.link[2].$text
+				link: elem.link[2].$text,
+				source: "NPR"
 			}
 			formattedStories.push(story);
 		});
