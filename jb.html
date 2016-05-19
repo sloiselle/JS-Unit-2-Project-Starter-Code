@@ -22,11 +22,11 @@
       </script>
 
       <script id='articleTemplate' type='text/x-handlebars-template'>
-        <article>
+        <article id='{{articleId}}' class='overlay'>
           <h1>{{title}}</h1>
           <h2>Published on: {{date}}</h2>
-          <span class='blurb'>{{blurb}}</span>
-          <span class='fullStory'>{{fullStory}}</span>
+          <p class='blurb'>{{blurb}}</p>
+          <p class='fullStory'>{{fullStory}}</p>
           <a href='{{link}}'>Read more from source</link>
         </article>
       </script>

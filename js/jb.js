@@ -1,5 +1,6 @@
 // *** sample story object ***
 var story = {
+  articleId: "12345",
   provider: "NPR",
   title: "Report Says Trade Deal Would Boost U.S. Economy, But Opponents Say No",
   date: "Thu, 19 May 2016 07:00:00 -0400",
@@ -22,15 +23,15 @@ function handleList (story) {
 handleList(story);
 
 // *** compile indiviudal article using handlebars ***
-function compileArticle (title, date, blurb, fullStory, link) {
+function compileArticle (articleId, title, date, blurb, fullStory, link) {
   var source2 = $('#articleTemplate').html();
   var template = Handlebars.compile(source2);
-  return template({title: title, date: date, blurb: blurb, fullStory: fullStory, link: link});
+  return template({articleId: articleId, title: title, date: date, blurb: blurb, fullStory: fullStory, link: link});
 }
 
 // *** pass story object into compileArticle function ***
 function handleStory (story) {
-  $('#templatedArticle').html(compileArticle(story.title, story.date, story.blurb, story.fullStory, story.link));
+  $('#templatedArticle').html(compileArticle(story.articleId, story.title, story.date, story.blurb, story.fullStory, story.link));
 }
 
 handleStory(story);
