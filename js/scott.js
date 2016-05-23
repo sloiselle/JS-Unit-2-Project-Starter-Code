@@ -73,7 +73,7 @@ Feedr.handleResponse = function(data, source) {
 					formattedDate = date.toLocaleString()
 					var image = '';
 					if(elem.image === undefined){
-						image = 'https://upload.wikimedia.org/wikipedia/commons/2/2d/NPR_News_logo.png'
+						image = 'https://lh4.ggpht.com/AnC8LtJK3CzWLuMrVee3FMgNrGcKXDPjtygeNfkLmV078Tu5C9L_bxcR0tEnnluu_e8=w300'
 					} else{
 						console.log(elem.image)
 						image = elem.image[0].crop[1].src;
@@ -88,7 +88,7 @@ Feedr.handleResponse = function(data, source) {
 					var date = new Date(elem.created_date);
 					var image = "";
 					if(elem.multimedia.length == 0){
-						image = 'http://www.explara.com/magazine/wp-content/uploads/2014/11/new-york-times-logo-thumbnail.jpg'
+						image = 'https://static01.nyt.com/images/icons/t_logo_291_black.png'
 					} else{
 						image = elem.multimedia[0].url;
 					}
