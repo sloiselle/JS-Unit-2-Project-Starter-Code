@@ -17,7 +17,6 @@ Feedr.getNPRData = function () {
 			$('#main').append("<div class='errorMessage'>Unfortunately, we couldn't get your feed. Please try again later...</div>");
 		},
 		success: function(data){
-			console.log(data);
 			Feedr.handleResponse(data, "NPR")
 		}
 	})
@@ -144,3 +143,11 @@ $('body').on('click','article',function() {
 $('body').on('click', '.closePopUp',function() {
 	$(this).parent().css({"opacity": "0","z-index": "-1"});
 })
+
+$('#feedr-logo').on('click', function(){
+	var $articleList = $('#main')
+	$articleList.html("");
+	Feedr.initializeFeed(Feedr.getNPRData(), $articleList);
+	Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
+	$(this).parent().parent().parent().find('span').text('All');
+});

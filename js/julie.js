@@ -33,7 +33,9 @@ $('body').on('click', '.closePopUp',function() {
 })
 
 $('#feedr-logo').on('click', function(){
-  Feedr.initializeFeed(Feedr.getNPRData(), $articleList);
-  Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
-  $(this).parent().parent().parent().find('span').text('All');
+	var $articleList = $('#main')
+	$articleList.html("");
+	Feedr.initializeFeed(Feedr.getNPRData(), $articleList);
+	Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
+	$(this).parent().parent().parent().find('span').text('All');
 });
