@@ -4,6 +4,7 @@
 
 // NPR API Key: 9ps9dzo9PmPyqtzPdjzF0drPbd6pX7cVRALpWavn
 // Guardian API Key: 695fa638-6cf0-4f26-abb9-21ad316b0b1f
+// Financial Times API Key: 8cwxyje3wvnn7muujndsr969
 
 //JB - Use handlebars.js to template articles
 //Julie - Add second source later
