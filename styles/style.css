@@ -37,13 +37,15 @@
 }
 
 #popUp {
-  opacity: 0.95;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background:  #fff;
+  opacity: 0;
+  z-index: -1;
+  transition-duration: .3s;
 }
 
 #popUp .closePopUp {
@@ -84,9 +86,15 @@
   display: inline-block;
 }
 
-#popUp .popUpAction:hover {
-  color: #FE052C;
-  background: #fff;
+#popUp .popUpAction {
+  padding: 10px;
+  background-color: #FE052C;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transform: 0.2s all;
+  margin-top: 30px;
+  display: inline-block;
 }
 
 /* Header styles */
@@ -218,6 +226,10 @@ nav ul ul li {
 }
 
 /* Individual Article Styling */
+#articleTemplate{
+  display: none;
+}
+
 .article {
   border-bottom: 1px solid #ccc;
   transition: 0.2s all;
