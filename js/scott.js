@@ -75,7 +75,6 @@ Feedr.handleResponse = function(data, source) {
 					if(elem.image === undefined){
 						image = 'https://lh4.ggpht.com/AnC8LtJK3CzWLuMrVee3FMgNrGcKXDPjtygeNfkLmV078Tu5C9L_bxcR0tEnnluu_e8=w300'
 					} else{
-						console.log(elem.image)
 						image = elem.image[0].crop[1].src;
 					}
 					var story = new formattedStory(elem.id, elem.title.$text, formattedDate, elem.teaser.$text, fullStory, elem.link[2].$text, "NPR",image);
@@ -108,6 +107,19 @@ Feedr.sortDates = function(stories) {
 	});
 }
 
+Feedr.randomColor = function() {
+	var hexList = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"];
+	var charSet = [];
+	var multiHex = "";
+	var hexString = "#";
+	for(var i = 0; i < 6; i++) {
+		var char = hexList[Math.ceil(Math.random() * 15)];
+		charSet.push(char);
+		hexString += char;
+	}
+	return hexString;
+}
+
 //Using the data from the feeds to populate the DOM
 Feedr.compileItem = function(story) {
   var source = $('#articleTemplate').html();
@@ -123,8 +135,18 @@ Feedr.initializeFeed = function(source, list) {
 
 
 //Styling stuff
-$('#search').on('click',function() {
-	$('#search').css('width','100px');
+$('.search').on('click',function() {
+	$('.search').css({'width':'','background':'white'})
+})
+
+$('.search').on('focusout',function() {
+	$('.search').css({'width':'','background':'rgba(0,0,0,0.2)'})
+	var length = $('.search').val().length
+	if(length === 0){
+		$('.search').css({'width':''})
+	} else{
+		$('.search').css({'width':(length * 12)+'px'})
+	}
 })
 
 //Initialization
@@ -163,6 +185,26 @@ $('body').on('click','article',function() {
 
 $('body').on('click', '.closePopUp',function() {
 	$(this).parent().css({"opacity": "0","z-index": "-1"});
+})
+
+$('header').on('click',function(){
+	var hexString = Feedr.randomColor();
+	var darkerColor = 'rgba(0,0,0,0.2)'
+	$(this).css({'background':hexString})
+	$('.title').css({'color':hexString})
+	$('.closePopUp').css({'color':hexString})
+	$('.popUpAction').css({'background':hexString})
+	$('#header ul li').css({'background':darkerColor})
+	$('.search').css({'background':darkerColor})
+	$('.search:hover').css({'color':darkerColor})
+	$('.search:focus').css({'color':darkerColor})
+	// $('.search:hover:-moz-placeholder').css({'color':darkerColor})
+	// $('.search:focus::-ms-input-placeholder').css({'color':darkerColor})
+
+})
+
+$('header > *').on('click',function(e){
+	e.stopPropagation();
 })
 
 $('#feedr-logo').on('click', function(){

@@ -291,11 +291,13 @@ nav ul ul li {
   transition-duration: .3s;
   color: #ffffff;
   font-weight: 700;
+  text-align: center;
   font-family: FontAwesome, 'Helvetica';
 }
 
 .search::-webkit-input-placeholder {
    color: #ffffff;
+
 }
 
 .search::-moz-placeholder {  /* Firefox 19+ */
@@ -329,6 +331,7 @@ nav ul ul li {
   outline: none;
   background: #ffffff;
   color: #cc0020;
+  text-align: left;
   font-family: FontAwesome, 'Helvetica';
 }
 
