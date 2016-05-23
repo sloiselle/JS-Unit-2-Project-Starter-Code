@@ -75,7 +75,8 @@ Feedr.handleResponse = function(data, source) {
 					if(elem.image === undefined){
 						image = 'https://upload.wikimedia.org/wikipedia/commons/2/2d/NPR_News_logo.png'
 					} else{
-						image = elem.image[0].src;
+						console.log(elem.image)
+						image = elem.image[0].crop[1].src;
 					}
 					var story = new formattedStory(elem.id, elem.title.$text, formattedDate, elem.teaser.$text, fullStory, elem.link[2].$text, "NPR",image);
 					formattedStories.push(story);
