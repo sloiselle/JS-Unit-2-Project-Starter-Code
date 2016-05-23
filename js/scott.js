@@ -41,6 +41,13 @@ Feedr.getNYTData = function () {
 	return formattedStories;
 };
 
+Feedr.getAllData = function() {
+	Feedr.getNPRData();
+	Feedr.getNYTData();
+	Feedr.sortDates();
+	return formattedStories;
+}
+
 Feedr.handleResponse = function(data, source) {
 			formattedStory = function(id, title, date, blurb, fullStory, link, source, image){
 				this.id = id
@@ -73,6 +80,7 @@ Feedr.handleResponse = function(data, source) {
 					var story = new formattedStory(elem.id, elem.title.$text, formattedDate, elem.teaser.$text, fullStory, elem.link[2].$text, "NPR",image);
 					formattedStories.push(story);
 				});
+				Feedr.sortDates(formattedStories);
 			} else if(source === "NYT"){
 				var stories = data.results;
 				stories.forEach(function(elem) {
@@ -87,8 +95,17 @@ Feedr.handleResponse = function(data, source) {
 					var story = new formattedStory("n/a", elem.title, formattedDate, elem.abstract, elem.abstract, elem.short_url, "NYT",image);
 					formattedStories.push(story);
 					})
+				Feedr.sortDates(formattedStories);
 			}
 		}
+
+Feedr.sortDates = function(stories) {
+	stories.sort(function(a,b){
+	var c = new Date(a.date);
+	var d = new Date(b.date);
+	return d-c;
+	});
+}
 
 //Using the data from the feeds to populate the DOM
 Feedr.compileItem = function(story) {

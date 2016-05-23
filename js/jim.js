@@ -36,6 +36,7 @@ $('.search').on('keyup',function() {
             $(this).parent().parent().parent().hide();
         }
     })
+});
 
 
 
