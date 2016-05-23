@@ -24,10 +24,16 @@
 
 
 
-$(function(){
-  $("ul li").click(function () {
-    alert("hi");
-          $("ul li #").dialog("ul li");
-          return false;
-      });
+$('body').on('click','article',function() {
+    $(this).next().css({"opacity": "1","z-index": "5"});
 })
+
+$('body').on('click', '.closePopUp',function() {
+    $(this).parent().css({"opacity": "0","z-index": "-1"});
+})
+
+$('#feedr-logo').on('click', function(){
+  Feedr.initializeFeed(Feedr.getNPRData(), $articleList);
+  Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
+  $(this).parent().parent().parent().find('span').text('All');
+});
