@@ -112,8 +112,10 @@ $('#search').on('click',function() {
 //Initialization
 $(function() {
 	var $articleList = $('#main')
+	formattedStories = [];
 	$articleList.children().remove();
 	Feedr.initializeFeed(Feedr.getNPRData(), $articleList);
+	$articleList.html("");
 	Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
 	$(this).parent().parent().parent().find('span').text('All');
 })
@@ -131,6 +133,7 @@ $('.newsList').on('click', function(){
 			$(this).parent().parent().parent().find('span').text('NYT');
 		} else{
 			Feedr.initializeFeed(Feedr.getNPRData(), $articleList);
+			$articleList.html("");
 			Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
 			$(this).parent().parent().parent().find('span').text('All');
 		}
@@ -145,9 +148,11 @@ $('body').on('click', '.closePopUp',function() {
 })
 
 $('#feedr-logo').on('click', function(){
+	formattedStories = [];
 	var $articleList = $('#main')
 	$articleList.html("");
 	Feedr.initializeFeed(Feedr.getNPRData(), $articleList);
+	$articleList.html("");
 	Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
 	$(this).parent().parent().parent().find('span').text('All');
 });

@@ -20,10 +20,22 @@
 
 
 // filter the list as user types
+// $('.search').on('keyup',function() {
+//     $('article').hide(); // hide all <article>s
+//     $('article:contains('+ $(this).val() +')').show(); // show those that match the case-sensitive filter
+// })
+
 $('.search').on('keyup',function() {
-    $('article').hide(); // hide all <article>s
-    $('article:contains('+ $(this).val() +')').show(); // show those that match the case-sensitive filter
-})
+        var search = $('.search').val().toUpperCase(); //Sets the search value to UpperCase always
+        var title = '';
+    $('.title').each( function(){
+        title = $(this).text().toUpperCase(); //Sets each title to UpperCase always
+        if(title.includes(search)){
+            $(this).parent().parent().parent().show();
+        } else{
+            $(this).parent().parent().parent().hide();
+        }
+    })
 
 
 

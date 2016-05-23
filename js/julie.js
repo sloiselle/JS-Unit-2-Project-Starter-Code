@@ -24,18 +24,18 @@
 
 
 
-$('body').on('click','article',function() {
-    $(this).next().css({"opacity": "1","z-index": "5"});
-})
+// $('body').on('click','article',function() {
+//     $(this).next().css({"opacity": "1","z-index": "5"});
+// })
 
-$('body').on('click', '.closePopUp',function() {
-    $(this).parent().css({"opacity": "0","z-index": "-1"});
-})
+// $('body').on('click', '.closePopUp',function() {
+//     $(this).parent().css({"opacity": "0","z-index": "-1"});
+// })
 
-$('#feedr-logo').on('click', function(){
-	var $articleList = $('#main')
-	$articleList.html("");
-	Feedr.initializeFeed(Feedr.getNPRData(), $articleList);
-	Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
-	$(this).parent().parent().parent().find('span').text('All');
-});
+// $('#feedr-logo').on('click', function(){
+// 	var $articleList = $('#main')
+// 	$articleList.html("");
+// 	Feedr.initializeFeed(Feedr.getNPRData(), $articleList);
+// 	Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
+// 	$(this).parent().parent().parent().find('span').text('All');
+// });
