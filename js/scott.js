@@ -41,9 +41,28 @@ Feedr.getNYTData = function () {
 	return formattedStories;
 };
 
+Feedr.getGuardianData = function() {
+	var guardianUrl = "http://content.guardianapis.com/search?api-key=695fa638-6cf0-4f26-abb9-21ad316b0b1f";
+
+    $.ajax({
+		url: guardianUrl,
+		method: "GET",
+		dataType: "json",
+		async: !1,
+		error: function(req, err){ 
+			$('#main').append("<div class='errorMessage'>Unfortunately, we couldn't get your feed. Please try again later...</div>");
+		},
+		success: function(data){
+			Feedr.handleResponse(data, "Guardian")
+  		}
+    })
+    return formattedStories;
+}
+
 Feedr.getAllData = function() {
 	Feedr.getNPRData();
 	Feedr.getNYTData();
+	Feedr.getGuardianData();
 	Feedr.sortDates();
 	return formattedStories;
 }
@@ -96,6 +115,15 @@ Feedr.handleResponse = function(data, source) {
 					formattedStories.push(story);
 					})
 				Feedr.sortDates(formattedStories);
+			} else if(source === "Guardian"){
+				var stories = data.response.results;
+				stories.forEach(function(elem) {
+					var date = new Date(elem.webPublicationDate);
+					formattedDate = date.toLocaleString();
+					var story = new formattedStory(elem.id, elem.webTitle, formattedDate, elem.sectionName, " ", elem.webUrl, "Guardian",'https://lh5.ggpht.com/ekfdW6Z5Hj1A_VBG2MWazZfCuz-66Gpkou0V8maEGDgO1tgNGET8Jy9Kbf-D9F7Hnv0=w300');
+					formattedStories.push(story);
+				})
+				Feedr.sortDates(formattedStories);	
 			}
 		}
 
@@ -157,6 +185,8 @@ $(function() {
 	Feedr.initializeFeed(Feedr.getNPRData(), $articleList);
 	$articleList.html("");
 	Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
+	$articleList.html("");
+	Feedr.initializeFeed(Feedr.getGuardianData(), $articleList);
 	$(this).parent().parent().parent().find('span').text('All');
 })
 
@@ -171,10 +201,15 @@ $('.newsList').on('click', function(){
 		} else if($(this).text() == 'New York Times'){
 			Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
 			$(this).parent().parent().parent().find('span').text('NYT');
+		} else if($(this).text() == 'Guardian'){
+			Feedr.initializeFeed(Feedr.getGuardianData(), $articleList);
+			$(this).parent().parent().parent().find('span').text('Guardian'); 
 		} else{
 			Feedr.initializeFeed(Feedr.getNPRData(), $articleList);
 			$articleList.html("");
 			Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
+			$articleList.html("");
+			Feedr.initializeFeed(Feedr.getGuardianData(), $articleList);
 			$(this).parent().parent().parent().find('span').text('All');
 		}
 })
