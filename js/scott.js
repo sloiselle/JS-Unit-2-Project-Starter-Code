@@ -91,10 +91,11 @@ Feedr.handleResponse = function(data, source) {
 					var date = new Date(elem.storyDate.$text)
 					formattedDate = date.toLocaleString()
 					var image = '';
-					if(elem.image === undefined){
+					console.log(elem);
+					if(elem.image === undefined || elem.image[0].crop[1] === undefined){
 						image = 'https://lh4.ggpht.com/AnC8LtJK3CzWLuMrVee3FMgNrGcKXDPjtygeNfkLmV078Tu5C9L_bxcR0tEnnluu_e8=w300'
 					} else{
-						image = elem.image[0].crop[1].src;
+						image = elem.image[0].crop[1].src || elem.image[0].crop[0].src;
 					}
 					var story = new formattedStory(elem.id, elem.title.$text, formattedDate, elem.teaser.$text, fullStory, elem.link[2].$text, "NPR",image);
 					formattedStories.push(story);
