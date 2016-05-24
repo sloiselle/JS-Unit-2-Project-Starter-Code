@@ -202,14 +202,8 @@ $(function() {
 	$articleList.html("");
 	Feedr.initializeFeed(Feedr.getGuardianData(), $articleList);
 	$(this).parent().parent().parent().find('span').text('All');
+	$("#overlay").css('opacity','0');
 })
-
-$("#overlay").show();
-$("#overlay-content").show();
-
-setTimeout(function(){    
-  $("#overlay").fadeOut();
-}, 5000);
 
 //Event handling
 $('.newsList').on('click', function(){
