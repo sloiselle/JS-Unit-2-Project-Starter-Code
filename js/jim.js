@@ -25,21 +25,6 @@
 //     $('article:contains('+ $(this).val() +')').show(); // show those that match the case-sensitive filter
 // })
 
-$('.search').on('keyup',function() {
-        var search = $('.search').val().toUpperCase(); //Sets the search value to UpperCase always
-        var title = '';
-    $('.title').each( function(){
-        title = $(this).text().toUpperCase(); //Sets each title to UpperCase always
-        if(title.includes(search)){
-            $(this).parent().parent().parent().show();
-        } else{
-            $(this).parent().parent().parent().hide();
-        }
-    })
-});
-
-
-
 // THIS IS THE INFINITE SCROLL CODE //
 // WE WANT TO GET 20 OR SO ROWS AT A TIME - FEWER MIGHT BE MORE RESPONSIVE
 // KEEP TRACK OF THE STARTING ROW AND NUMBER OF ROWS
