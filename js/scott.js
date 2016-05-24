@@ -1,8 +1,9 @@
 
 //NYT API Key: 9110591622f644cb97e319bb627afcdf
 
-var Feedr = {};
-var formattedStories = [];
+var Feedr = {
+	formattedStories: []
+};
 //Getting and formatting the feeds
 
 Feedr.getNPRData = function () {
@@ -249,5 +250,7 @@ $('#feedr-logo').on('click', function(){
 	Feedr.initializeFeed(Feedr.getNPRData(), $articleList);
 	$articleList.html("");
 	Feedr.initializeFeed(Feedr.getNYTData(), $articleList);
+	$articleList.html("");
+	Feedr.initializeFeed(Feedr.getGuardianData(), $articleList);
 	$(this).parent().parent().parent().find('span').text('All');
 });
