@@ -225,7 +225,7 @@ nav ul ul li {
 }
 
 /* Individual Article Styling */
-#articleTemplate{
+#articleTemplate *{
   display: none;
 }
 
