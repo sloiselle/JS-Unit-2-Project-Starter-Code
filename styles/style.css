@@ -225,7 +225,7 @@ nav ul ul li {
 }
 
 /* Individual Article Styling */
-#articleTemplate *{
+#articleTemplate{
   display: none;
 }
 
@@ -248,6 +248,7 @@ nav ul ul li {
 
 .article .featuredImage img {
   max-width: 100%;
+  min-height: 60px;
   border-radius: 50px;
 }
 

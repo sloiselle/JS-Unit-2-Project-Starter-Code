@@ -64,7 +64,7 @@ Feedr.getNYTData = function () {
 };
 
 Feedr.getGuardianData = function() {
-	var guardianUrl = "http://content.guardianapis.com/search?api-key=695fa638-6cf0-4f26-abb9-21ad316b0b1f";
+	var guardianUrl = "http://content.guardianapis.com/search?api-key=695fa638-6cf0-4f26-abb9-21ad316b0b1f&show-fields=all";
 
     $.ajax({
 		url: guardianUrl,
@@ -75,6 +75,7 @@ Feedr.getGuardianData = function() {
 			$('#main').append("<div class='errorMessage'>Unfortunately, we couldn't get your feed. Please try again later...</div>");
 		},
 		success: function(data){
+			console.log(data)
 			Feedr.handleResponse(data, "Guardian")
   		}
     })
@@ -134,7 +135,19 @@ Feedr.handleResponse = function(data, source) {
 				stories.forEach(function(elem) {
 					var date = new Date(elem.webPublicationDate);
 					formattedDate = date.toLocaleString();
-					var story = new formattedStory(elem.id, elem.webTitle, formattedDate, elem.sectionName, " ", elem.webUrl, "Guardian",'https://lh5.ggpht.com/ekfdW6Z5Hj1A_VBG2MWazZfCuz-66Gpkou0V8maEGDgO1tgNGET8Jy9Kbf-D9F7Hnv0=w300');
+					var image = "";
+					if(elem.fields.thumbnail === undefined){
+						image = 'https://lh5.ggpht.com/ekfdW6Z5Hj1A_VBG2MWazZfCuz-66Gpkou0V8maEGDgO1tgNGET8Jy9Kbf-D9F7Hnv0=w300'
+					} else{
+						image = elem.fields.thumbnail;
+					}
+					var storyBody = elem.fields.body;
+					var regex = /(<([^>]+)>)/ig;
+					var result = storyBody.replace(regex, "");
+					if(result.length > 500){
+						result = result.slice(0,500).trim() + "...";
+					}
+					var story = new formattedStory(elem.id, elem.webTitle, formattedDate, elem.fields.trailText, result, elem.fields.shortUrl, "Guardian",image);
 					formattedStories.push(story);
 				})
 				Feedr.sortDates(formattedStories);	
@@ -203,6 +216,9 @@ $(function() {
 	Feedr.initializeFeed(Feedr.getGuardianData(), $articleList);
 	$(this).parent().parent().parent().find('span').text('All');
 	$("#overlay").css('opacity','0');
+	setTimeout(function(){
+		$("#overlay").hide();
+	},1000)
 })
 
 //Event handling
