@@ -75,7 +75,6 @@ Feedr.getGuardianData = function() {
 			$('#main').append("<div class='errorMessage'>Unfortunately, we couldn't get your feed. Please try again later...</div>");
 		},
 		success: function(data){
-			console.log(data)
 			Feedr.handleResponse(data, "Guardian")
   		}
     })
