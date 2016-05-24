@@ -91,7 +91,6 @@ Feedr.handleResponse = function(data, source) {
 					var date = new Date(elem.storyDate.$text)
 					formattedDate = date.toLocaleString()
 					var image = '';
-					console.log(elem);
 					if(elem.image === undefined || elem.image[0].crop[1] === undefined){
 						image = 'https://lh4.ggpht.com/AnC8LtJK3CzWLuMrVee3FMgNrGcKXDPjtygeNfkLmV078Tu5C9L_bxcR0tEnnluu_e8=w300'
 					} else{
